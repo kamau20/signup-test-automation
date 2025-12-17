@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form - Test Automation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .required {
+            color: #e74c3c;
+            margin-left: 3px;
+        }
+
+        .optional {
+            color: #95a5a6;
+            font-weight: 400;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        input.error {
+            border-color: #e74c3c;
+        }
+
+        input.success {
+            border-color: #27ae60;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .password-hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Account</h1>
+        <p class="subtitle">Fill in the details below to get started</p>
+
+        <div class="success-message" id="successMessage">
+            ✓ Account created successfully! Redirecting to dashboard...
+        </div>
+
+        <form id="signupForm" novalidate>
+            <div class="form-group">
+                <label for="fullName">
+                    Full Name<span class="required">*</span>
+                </label>
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="John Doe"
+                    autocomplete="name"
+                >
+                <div class="error-message" id="fullNameError">Full name is required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">
+                    Phone Number<span class="required">*</span>
+                </label>
+                <input
+                    type="tel"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    placeholder="+254712345678"
+                    autocomplete="tel"
+                >
+                <div class="error-message" id="phoneNumberError">Phone number is required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    Email Address<span class="optional">(Optional)</span>
+                </label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="john.doe@example.com"
+                    autocomplete="email"
+                >
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    Password<span class="required">*</span>
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="new-password"
+                >
+                <div class="password-hint">Must be at least 8 characters</div>
+                <div class="error-message" id="passwordError">Password must be at least 8 characters long</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">
+                    Confirm Password<span class="required">*</span>
+                </label>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm your password"
+                    autocomplete="new-password"
+                >
+                <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
+            </div>
+
+            <button type="submit" id="createAccountBtn">Create Account</button>
+        </form>
+
+        <div class="footer">
+            Already have an account? <a href="#">Sign in</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('signupForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // Form elements
+        const fullName = document.getElementById('fullName');
+        const phoneNumber = document.getElementById('phoneNumber');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+
+        // Error message elements
+        const fullNameError = document.getElementById('fullNameError');
+        const phoneNumberError = document.getElementById('phoneNumberError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmPasswordError = document.getElementById('confirmPasswordError');
+
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Clear error on input
+        [fullName, phoneNumber, email, password, confirmPassword].forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error', 'success');
+                const errorElement = document.getElementById(this.id + 'Error');
+                errorElement.classList.remove('show');
+            });
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let isValid = true;
+
+            // Reset all errors
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.classList.remove('show');
+            });
+            document.querySelectorAll('input').forEach(input => {
+                input.classList.remove('error', 'success');
+            });
+            successMessage.classList.remove('show');
+
+            // Validate Full Name
+            if (fullName.value.trim() === '') {
+                fullName.classList.add('error');
+                fullNameError.classList.add('show');
+                isValid = false;
+            } else {
+                fullName.classList.add('success');
+            }
+
+            // Validate Phone Number
+            if (phoneNumber.value.trim() === '') {
+                phoneNumber.classList.add('error');
+                phoneNumberError.classList.add('show');
+                isValid = false;
+            } else {
+                phoneNumber.classList.add('success');
+            }
+
+            // Validate Email (only if provided)
+            if (email.value.trim() !== '' && !emailRegex.test(email.value.trim())) {
+                email.classList.add('error');
+                emailError.classList.add('show');
+                isValid = false;
+            } else if (email.value.trim() !== '') {
+                email.classList.add('success');
+            }
+
+            // Validate Password
+            if (password.value.trim() === '') {
+                password.classList.add('error');
+                passwordError.textContent = 'Password is required';
+                passwordError.classList.add('show');
+                isValid = false;
+            } else if (password.value.length < 8) {
+                password.classList.add('error');
+                passwordError.textContent = 'Password must be at least 8 characters long';
+                passwordError.classList.add('show');
+                isValid = false;
+            } else {
+                password.classList.add('success');
+            }
+
+            // Validate Confirm Password
+            if (confirmPassword.value.trim() === '') {
+                confirmPassword.classList.add('error');
+                confirmPasswordError.textContent = 'Confirm password is required';
+                confirmPasswordError.classList.add('show');
+                isValid = false;
+            } else if (password.value !== confirmPassword.value) {
+                confirmPassword.classList.add('error');
+                confirmPasswordError.textContent = 'Passwords do not match';
+                confirmPasswordError.classList.add('show');
+                isValid = false;
+            } else {
+                confirmPassword.classList.add('success');
+            }
+
+            // If all validations pass
+            if (isValid) {
+                successMessage.classList.add('show');
+
+                // Simulate account creation and redirect
+                setTimeout(() => {
+                    // In a real application, this would redirect to dashboard
+                    console.log('Account created successfully!');
+                    console.log('Full Name:', fullName.value);
+                    console.log('Phone:', phoneNumber.value);
+                    console.log('Email:', email.value || 'Not provided');
+
+                    // Reset form
+                    form.reset();
+                    document.querySelectorAll('input').forEach(input => {
+                        input.classList.remove('success');
+                    });
+
+                    // Hide success message after 3 seconds
+                    setTimeout(() => {
+                        successMessage.classList.remove('show');
+                    }, 3000);
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
