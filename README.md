@@ -177,4 +177,3 @@ This project is open source and available under the [MIT License](LICENSE).
 
 - Built with Python and Selenium
 - Testing framework: Pytest
-- Interview preparation project for QA position
