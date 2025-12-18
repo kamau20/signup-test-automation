@@ -165,9 +165,9 @@ The project uses pytest configuration for:
 ## 👤 Author
 
 **[Your Name]**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- GitHub: [@kamau20](https://github.com/kamau20)
+- LinkedIn: [Elisha Kamau](https://linkedin.com/in/elisha-kamau-628ba4161/)
+- Email: kamauelisha8@gmail.com
 
 ## 📄 License
 
