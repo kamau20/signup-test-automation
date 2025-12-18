@@ -34,7 +34,7 @@ Automated testing suite for a sign-up form using Python, Pytest, and Selenium We
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/signup-test-automation.git
+git clone https://github.com/kamau20/signup-test-automation.git
 cd signup-test-automation
 ```
 
