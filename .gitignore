@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv/
+
+# PyCharm
+.idea/
+*.iml
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Reports
+reports/*.html
+reports/*.png
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Selenium
+chromedriver.exe
+geckodriver.exe
+
+#### **B. Update `requirements.txt`**
+
+Make sure it has these lines:
+```
+pytest==7.4.3
+selenium==4.15.2
+webdriver-manager==4.0.1
+pytest-html==4.1.1
